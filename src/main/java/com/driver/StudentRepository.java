@@ -1,4 +1,5 @@
 package com.driver;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -6,19 +7,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-@Repository
 
+@Repository
 public class StudentRepository {
     HashMap<String,Student> studentDb = new HashMap<>();
     HashMap<String,Teacher> teacherDb = new HashMap<>();
     HashMap<String,List<String>> studentTeacherDb = new HashMap<>();
-    public void addStudentInDb(Student student)
-    {
-        studentDb.put(student.getName(), student);
+    public void addStudentInDb(Student student) {
+        studentDb.put(student.getName(),student);
     }
+
     public void addTeacherInDb(Teacher teacher) {
         teacherDb.put(teacher.getName(),teacher);
     }
+
     public void addStudentTeacherPairInDb(String student, String teacher) {
         List<String> studentList = studentTeacherDb.getOrDefault(teacher,new ArrayList<>());
         studentList.add(student);
@@ -81,5 +83,4 @@ public class StudentRepository {
         }
         studentTeacherDb.clear();
     }
-
 }
